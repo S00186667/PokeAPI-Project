@@ -1,43 +1,32 @@
 
 <nav class="navbar navbar-expand-md navbar-dark bg-light">
-  <h1>Pokedex</h1>
 </nav>
 <div class = 'container'>
-  <h1>Search the Pokedex!</h1>
+  <img src="https://fontmeme.com/permalink/200504/f1c3195719471926496ce36cedefbd0a.png" alt="pokemon-font">
   <form>
     <div class="form-group">
-      <input type ='text' name = 'pokemon-name' class="form-control" #pokeName placeholder='Please enter pokemon name'>
+      <input type ='text' name = 'pokemon-name' class="form-control" #pokeName placeholder='Search'>
 
     </div>
-    <button (click)="getPokeDetails(pokeName.value)" type="submit" class="btn btn-light">Get Pokemon Details</button>
-  </form>
+    <button (click)="getPokeDetails(pokeName.value)" type="submit" class="btn btn-dark" style="margin: 5px;">Display Pokedex</button>
 
-  <div class="row bg-light  mt-4  p-4" *ngIf="pokeData">
-    <div class="col-sm-4">
-      <div>
-        <h3>{{pokeData.Error}}</h3>
+
+<div class="card text-center" style="margin: 5px;">
+  <div class="card-header">
+   <h2> Pokemon</h2>
+  </div>
+  <div class="card-body">
+    <div *ngIf ="pokeData.name">
+      <h3>{{pokeData.name}}</h3>
+      <img src="https://i.pinimg.com/originals/31/0f/49/310f499a9827478cfe263a3432b1ef1d.jpg" width="180" height="100">
+     </div>
+     <div *ngIf = "pokeData">
+      <div *ngFor="let ability of pokeData.abilities">
+        <p>Name : {{ability.ability.name}}</p>
+        <P>URL: {{ability.ability.url}}</P>
       </div>
     </div>
-
-    <div class="col-sm-8">
-      <div *ngIf="pokeData.pokeMove">
-        <h1>{{pokeData.pokeMove}}</h1>
-        <h2>Pokemon Name: {{pokeData.pokeName}}</h2>
-
-      </div>
-    </div>
-  </div> 
-
 </div>
-
-<style>
-  body
-  {
-    background-color: white;
+  </div>
   
-  }
-  h1
-  {
-    color: red;
-  }
-</style>
+
